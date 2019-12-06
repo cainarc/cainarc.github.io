@@ -25,6 +25,7 @@ var background = function (window) {
         // container which will be returned
         var background;
         var tree;
+        var buildings = [];
         
         // ANIMATION VARIABLES HERE:
      
@@ -51,30 +52,26 @@ var background = function (window) {
             
             var circle;
             for(var i=0;i<20;i++) {
-            circle = draw.circle(10,'white','LightGray',2);
-            circle.x = canvasWidth*Math.random();
-            circle.y = groundY*Math.random();
-            background.addChild(circle);
-                                  }
+                circle = draw.circle(10,'white','LightGray',2);
+                circle.x = canvasWidth*Math.random();
+                circle.y = groundY*Math.random();
+                background.addChild(circle);
+            }
             
             // TODO: 5 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
-            var buildings = [];
-            
             for(var i=0;i<5;++i) {
-            var buildingHeight = 300;
-            var building = draw.rect(75,buildingHeight,'LightGray','Black',1);
-            building.x = 200*i;
-            building.y = groundY-buildingHeight;
-            background.addChild(building);
-            buildings.push(building);
-                                  }
+                var buildingHeight = 300;
+                var building = draw.rect(75,buildingHeight,'LightGray','Black',1);
+                building.x = 200*i;
+                building.y = groundY-buildingHeight;
+                background.addChild(building);
+                buildings.push(building);
+            }
             
             
             // TODO 4: Part 1 - Add a tree
-            
-            var tree;
-            
+
             tree = draw.bitmap('img/tree.png');
             tree.x = 400;
             tree.y = 250;
@@ -93,12 +90,21 @@ var background = function (window) {
             
             // TODO 4: Part 2 - Move the tree!
             
-            
+            tree.x = tree.x + 1;
+            if(tree.x < 200) {
+               tree.x < 0;
+                              }
 
             // TODO 5: Part 2 - Parallax
             
-            
-            
+            for(var i=0;i<5;++i) {
+            var buildingHeight = 300;
+            var building = draw.rect(75,buildingHeight,'White','Black',1);
+            building.x = 200*i;
+            building.y = groundY-buildingHeight;
+            background.addChild(building);
+            buildings.push(building);
+                                  }
 
         } // end of update function - DO NOT DELETE
         
